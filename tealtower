@@ -1,24 +1,3 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include "Room.h"
-#include <cstring>
-#include <cmath>
-
-using namespace std;
-
-int main()
-{
-  string words, myName;
-  int chooserfiler[7] = {0, 0, 0, 0, 0, 0, 0};
-  int choice, where = 0, set = 0, temp, what, loc = 0;
-
-  Room Teal[22];
-  string itemInven[20] = {"nothing", "Libby", "Cookies", "Poptarts", "Rubik's cube", "Cheerios", "Banana Suit", "VolleyBall", "Logic Textbook", "Ping Pong Ball", "tea", "No Father", "Chopsticks",
-                          "hair gel", "Dota 2", "Engagement Ring", "Sunchips", "Nametag", "Diploma"};
-  int gfh[6] = {0, 0, 0, 0, 0, 0};
-  Room activeRoom(0, 0, 0, " ", 0, " ", gfh);
-  //
   int f1R1[2] = {2, 20};
   Room flr1Rm1(0, 1, 2, "First Floor Entrance", 0, "Justin", f1R1);
   flr1Rm1.setStatement("I'm Your guide for the first floor. Please assist my people.\nYou can start by grabbing Cole's hat and bringing it to him.\nHe's just down the hall.");
@@ -121,123 +100,22 @@ int main()
   int lobbyMove[2] = {0, 21};
   Room lobby(0, 21, 2, "Teal Lobby", 0, "Jamie Fortin", lobbyMove);
   lobby.setStatement("HAI AND WELCOME TO TEAL");
-  Teal[20] = lobby;
+  Teal[20] = lobby;     }----------------------------------- get rid of this, replace with  |
+                                                                                             |
+                                                                                             |
+                                                                                             |
+  int elevateFlr[5] = {20, 5, 10, 16, 19};                                                   |
+  Room elevator(0, 22, 5, "Elevator", 0, "Drunk Homeless Person", elevateFlr);               |
+  elevator.setStatement("*You talk to yourself in the elevator*");                           |
+  Teal[21].setLength(elevator.getLength());     ----------------}                            |
+  Teal[21].setIndex(elevator.getIndex());                       }                            |
+  Teal[21].setName(elevator.getName());                         }                            |
+  Teal[21].setThing(elevator.getThing());                       }          this              |
+  Teal[21].setWho(elevator.getWho());                           }----------------------------|
+  Teal[21].setStatement(elevator.getStatement());               }
+  for (int i = 0; i < elevator.getLength(); i++)                }
+  {                                                             }
+    Teal[21].setCanMove(i, elevator.getLocation(i));            }
+  }                                            -----------------}
 
-
-
-  int elevateFlr[5] = {20, 5, 10, 16, 19};
-  Room elevator(0, 22, 5, "Elevator", 0, "Drunk Homeless Person", elevateFlr);
-  Teal[21] = elevator;
-
-
-
-  cout << "Please enter your name: ";
-  getline(cin, myName, '\n');
-  cout << "please acknowledge that your journey will begin\n(type '' go '')\n";
-  getline(cin, words, '\n');
-  activeRoom.setLength(lobby.getLength());
-  activeRoom.setIndex(lobby.getIndex());
-  activeRoom.setName("Teal Lobby");
-  activeRoom.setThing(lobby.getThing());
-  activeRoom.setWho(lobby.getWho());
-  activeRoom.setStatement(lobby.getStatement());
-  for (int i = 0; i < activeRoom.getLength(); i++)
-  {
-    lobby.getLocation(i, loc);
-    activeRoom.setCanMove(i, loc);
-  }
-
-  while (where < 22)
-  {
-    if (where != 19)
-    {
-      activeRoom.getName(words);
-      activeRoom.getLocation(0, temp);
-      cout << "\n\n temp is currently " << temp << "\n\n\n";
-      Teal[temp].getLocation(temp, loc);
-      cout << loc;
-      cout << "\nyou are in " << words << ".\n" << "What would you like to do?\n";
-      cout << "1.\tTalk\n2.\tSearch\n3.\tMove\n\n";
-      cin >> choice;
-
-
-      //switch / if loop to do whichever function based on what was chosen
-
-      if (choice == 1)
-      {
-        cout << "\nYou talk to " << activeRoom.getWho() << ".\n\n";
-        cout << "\nHi, " << myName << endl << activeRoom.getStatement() << endl << endl;
-      }
-      else if (choice == 2)
-      {
-       cout << "\nYou look around, and manage to obtain " << itemInven[activeRoom.getThing()] << "...\n\n";
-       if (activeRoom.getThing() != 0)
-       {
-        activeRoom.setThing(0);
-        set++;
-       }
-      }
-      else if (choice == 3)
-      {
-        for ( int i = 0; i < activeRoom.getLength(); i++)
-        {
-          activeRoom.getLocation(i, temp);
-          chooserfiler[i] = temp;
-          Teal[temp].getName(words);
-          cout << '\t' << i + 1 << ".\t" << words << '\n';
-        }
-        cin >> what;
-        what = what - 1;
-        temp = chooserfiler[what];
-        Teal[temp].getName(words);
-        activeRoom.setLength(Teal[temp].getLength());
-        activeRoom.setIndex(Teal[temp].getIndex());
-        activeRoom.setName(words);
-        activeRoom.setThing(Teal[temp].getThing());
-        activeRoom.setWho(Teal[temp].getWho());
-        activeRoom.setStatement(Teal[temp].getStatement());
-        for ( int i = 0; i < activeRoom.getLength(); i++)
-        {
-          loc = 0;
-          Teal[temp].getName(words);
-          cout << "\n\nname is " << words << "\n\n";
-          Teal[temp].getLocation(i, loc);
-          chooserfiler[i] = loc;
-          Teal[loc].getName(words);
-          cout << "\n\n\nstuff\t" << i + 1 << ".\t" << words << '\n';
-        }
-        for (int i = 0; i < activeRoom.getLength(); i++)
-        {
-          activeRoom.setCanMove(i, chooserfiler[i]);
-        }
-      }
-    }
-    else
-    {
-      activeRoom.getName(words);
-      cout << "\nyou finally arrived to the " << words << ".\n" << "Confused, mate?\n";
-      cout << "1.\tAchieve Enlightenment\n2.\tDon't Achieve Enlightenment\n\n";
-      cin >> choice;
-
-     // switch / if loop to do whichever function based on what was chosen
-
-      if (choice == 1)
-      {
-        cout << "You talk to " << activeRoom.getWho() << ".\n(say hello)->";
-        getline(cin, words, '\n');
-        cout << "\nHi, " << myName << endl << "You have finally arrived. we have been expecting you. Will you accept my blessing?" << endl << endl;
-        cin >> words;
-        cout << "\nSuddenly, Kenneth produces a " << activeRoom.getThing() << " from seemingly nowhere\n and hands it to you. He then fades away into the light.\n Darkness closes in as you pass out from excitement and relief.\n\n";
-        activeRoom.setThing(0);
-        cout << "Congratz , you won da game!";
-      }
-      else
-      {
-        cout << "You idiot, you just gave up the chance of a lifetime!!!\nYou lose the game.\n";
-      }
-
-    }
-  }
-return 0;
-}
 
