@@ -183,7 +183,7 @@
   int f3R4[4] = {10, 14, 12, 11};
   Room flr3Rm4(0, 14, 4, "3rd Floor Hallway", 13, "John Bessire", f3R4);
   flr3Rm4.setStatement("SL33P !$ N0T N3C3$$@RY F0R R0B0T$");
-  Teal[13].setLength(elevator.getLength());                                
+  Teal[13].setLength(flr3Rm4.getLength());                                
   Teal[13].setIndex(flr3Rm4.getIndex());                                                   
   Teal[13].setName(flr3Rm4.getName());                                                    
   Teal[13].setThing(flr3Rm4.getThing());                                 
@@ -226,14 +226,14 @@
   Room flr4Rm2(0, 17, 4, "Fourth Floor Hallway", 15, "Aryn Bolton", f4R2);
   flr4Rm2.setStatement("Have you seen my Engagement Ring anywhere?");
   Teal[16].setLength(flr4Rm2.getLength());                                
-  Teal[21].setIndex(flr4Rm2.getIndex());                                                   
-  Teal[21].setName(flr4Rm2.getName());                                                    
-  Teal[21].setThing(flr4Rm2.getThing());                                 
-  Teal[21].setWho(flr4Rm2.getWho());                           
-  Teal[21].setStatement(flr4Rm2.getStatement());               
+  Teal[16].setIndex(flr4Rm2.getIndex());                                                   
+  Teal[16].setName(flr4Rm2.getName());                                                    
+  Teal[16].setThing(flr4Rm2.getThing());                                 
+  Teal[16].setWho(flr4Rm2.getWho());                           
+  Teal[16].setStatement(flr4Rm2.getStatement());               
   for (int i = 0; i < flr4Rm2.getLength(); i++)                
   {                                                           
-    Teal[21].setCanMove(i, flr4Rm2.getLocation(i));          
+    Teal[16].setCanMove(i, flr4Rm2.getLocation(i));          
   } 
   //
   int f4R3[1] = {16};
@@ -272,15 +272,15 @@
   Teal[19].setThing(flr5.getThing());                                 
   Teal[19].setWho(flr5.getWho());                           
   Teal[19].setStatement(flr5.getStatement());               
-  for (int i = 0; i < flr4Rm5.getLength(); i++)                
+  for (int i = 0; i < flr5.getLength(); i++)                
   {                                                           
-    Teal[19].setCanMove(i, flr4Rm5.getLocation(i));          
+    Teal[19].setCanMove(i, flr5.getLocation(i));          
   } 
 
   int lobbyMove[2] = {0, 21};
   Room lobby(0, 21, 2, "Teal Lobby", 0, "Jamie Fortin", lobbyMove);
   lobby.setStatement("HAI AND WELCOME TO TEAL");
-  Teal[20] =.setLength(lobby.getLength());                                
+  Teal[20].setLength(lobby.getLength());                                
   Teal[20].setIndex(lobby.getIndex());                                                   
   Teal[20].setName(lobby.getName());                                                    
   Teal[20].setThing(lobby.getThing());                                 
@@ -289,25 +289,22 @@
   for (int i = 0; i < lobby.getLength(); i++)                
   {                                                           
     Teal[20].setCanMove(i, lobby.getLocation(i));          
-  } 
+  }
   
+  //
   
-  }----------------------------------- get rid of this, replace with  |
-                                                                                             |
-                                                                                             |
-                                                                                             |
-  int elevateFlr[5] = {20, 5, 10, 16, 19};                                                   |
-  Room elevator(0, 22, 5, "Elevator", 0, "Drunk Homeless Person", elevateFlr);               |
-  elevator.setStatement("*You talk to yourself in the elevator*");                           |
-  Teal[21].setLength(elevator.getLength());                                
-  Teal[21].setIndex(elevator.getIndex());                                                   
-  Teal[21].setName(elevator.getName());                                                    
-  Teal[21].setThing(elevator.getThing());                                 
-  Teal[21].setWho(elevator.getWho());                           
-  Teal[21].setStatement(elevator.getStatement());               
-  for (int i = 0; i < elevator.getLength(); i++)                
-  {                                                           
-    Teal[21].setCanMove(i, elevator.getLocation(i));          
-  }                                            
+  int elevateFlr[5] = {20, 5, 10, 16, 19};
+  Room elevator(0, 22, 5, "Elevator", 0, "Drunk Homeless Person", elevateFlr);
+  elevator.setStatement("*You talk to yourself in the elevator*");
+  Teal[21].setLength(elevator.getLength());
+  Teal[21].setIndex(elevator.getIndex());
+  Teal[21].setName(elevator.getName());
+  Teal[21].setThing(elevator.getThing());
+  Teal[21].setWho(elevator.getWho());
+  Teal[21].setStatement(elevator.getStatement());
+  for (int i = 0; i < elevator.getLength(); i++)
+  {
+    Teal[21].setCanMove(i, elevator.getLocation(i));
+  }
 
 
